@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mythic Path | Carry e Coaching</title>
+  <meta name="description" content="Mythic Path. Duo Carry, Coaching e Progressão Assistida em Where Winds Meet. Você joga na sua conta, sem compartilhamento de login." />
+  <style>
+    :root{
+      --bg:#0b0f17;
+      --panel:#0f1623;
+      --panel2:#121c2e;
+      --text:#e9eefc;
+      --muted:#a9b4d6;
+      --brand:#ffb84d;
+      --brand2:#7aa7ff;
+      --ok:#5ef0a6;
+      --border:rgba(255,255,255,.10);
+      --shadow:0 18px 40px rgba(0,0,0,.35);
+      --r:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 12% 10%, rgba(122,167,255,.18), transparent 55%),
+        radial-gradient(900px 600px at 86% 18%, rgba(255,184,77,.16), transparent 52%),
+        radial-gradient(900px 700px at 40% 96%, rgba(94,240,166,.10), transparent 55%),
+        var(--bg);
+      line-height:1.35;
+    }
+    a{color:inherit}
+    .wrap{max-width:1120px;margin:0 auto;padding:24px}
+    .topbar{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:14px;flex-wrap:wrap;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;
+      font-weight:950;letter-spacing:.3px;
+    }
+    .logo{
+      width:44px;height:44px;border-radius:16px;
+      background:linear-gradient(135deg, rgba(255,184,77,.95), rgba(122,167,255,.95));
+      box-shadow:var(--shadow);
+    }
+    .nav{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-weight:750}
+    .nav a{text-decoration:none;opacity:.95}
+    .nav a:hover{color:var(--text)}
+    .card{
+      background:linear-gradient(180deg, rgba(18,28,46,.92), rgba(15,22,35,.92));
+      border:1px solid var(--border);
+      border-radius:var(--r);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .hero{
+      margin-top:18px;
+      display:grid;grid-template-columns:1.25fr .75fr;gap:14px;
+      align-items:stretch;
+    }
+    @media(max-width:900px){.hero{grid-template-columns:1fr}}
+    .heroMain{padding:26px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border-radius:999px;
+      background:rgba(255,184,77,.12);
+      border:1px solid rgba(255,184,77,.25);
+      color:#ffd79a;
+      font-weight:900;font-size:13px;
+    }
+    h1{margin:14px 0 10px;font-size:44px;line-height:1.02}
+    @media(max-width:520px){h1{font-size:36px}}
+    .lead{color:var(--muted);font-size:16px;max-width:70ch}
+    .ctaRow{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:12px 16px;border-radius:14px;
+      border:1px solid var(--border);
+      text-decoration:none;
+      font-weight:950;
+      transition: transform .08s ease, border-color .08s ease;
+      user-select:none;
+    }
+    .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.18)}
+    .btnPrimary{background:linear-gradient(135deg, rgba(255,184,77,.98), rgba(255,143,77,.98)); color:#1a1206;border:none}
+    .btnGhost{background:rgba(255,255,255,.04);color:var(--text)}
+    .heroSide{padding:18px;display:flex;flex-direction:column;gap:12px}
+    .kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .kpi{
+      padding:12px;border-radius:16px;border:1px solid var(--border);
+      background:rgba(0,0,0,.12);
+    }
+    .kpi strong{display:block;font-size:14px}
+    .kpi span{color:var(--muted);font-weight:750;font-size:12px}
+    .note{
+      padding:14px;border-radius:16px;
+      background:rgba(94,240,166,.07);
+      border:1px solid rgba(94,240,166,.18);
+      color:#d9ffef;font-weight:750;
+    }
+    .section{margin-top:22px}
+    .section h2{margin:0 0 10px;font-size:26px}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    @media(max-width:900px){.grid3{grid-template-columns:1fr}}
+    .box{
+      padding:16px;border-radius:16px;border:1px solid var(--border);
+      background:rgba(0,0,0,.12);
+    }
+    .box h3{margin:0 0 8px}
+    .box p{margin:0;color:var(--muted)}
+    .pill{
+      display:inline-flex;gap:8px;align-items:center;
+      margin-top:12px;padding:7px 10px;border-radius:999px;
+      border:1px solid rgba(122,167,255,.25);
+      background:rgba(122,167,255,.10);
+      color:#cfe0ff;font-weight:900;font-size:12px;
+    }
+    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    @media(max-width:900px){.pricing{grid-template-columns:1fr}}
+    .priceCard{padding:16px}
+    .tag{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;
+      border:1px solid rgba(255,184,77,.25);
+      background:rgba(255,184,77,.10);
+      color:#ffd79a;font-weight:900;font-size:12px;
+    }
+    .price{
+      font-size:34px;font-weight:980;margin:10px 0 8px;letter-spacing:.2px
+    }
+    .sub{color:var(--muted);font-weight:750;font-size:12px}
+    ul{margin:10px 0 0;padding-left:18px;color:var(--muted)}
+    li{margin:6px 0}
+    details{
+      border:1px solid var(--border);
+      background:rgba(0,0,0,.12);
+      border-radius:16px;
+      padding:14px;
+    }
+    summary{cursor:pointer;font-weight:950}
+    details p{color:var(--muted);margin:10px 0 0}
+    .ctaBlock{
+      padding:18px;
+      display:flex;gap:14px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;
+    }
+    .small{font-size:12px;color:var(--muted);font-weight:750}
+    .divider{height:1px;background:rgba(255,255,255,.08);margin:18px 0}
+    .footer{margin:22px 0 6px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--muted);font-weight:750;font-size:12px}
+    .highlight{
+      border:1px solid rgba(255,184,77,.28);
+      background:linear-gradient(180deg, rgba(255,184,77,.09), rgba(0,0,0,.12));
+    }
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div style="font-size:16px">Mythic Path</div>
+          <div class="small">Carry e Coaching para :contentReference[oaicite:0]{index=0}</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#servicos">Serviços</a>
+        <a href="#planos">Planos</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#faq">Dúvidas</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card heroMain">
+        <span class="badge">Você joga na sua conta, a gente acelera o caminho</span>
+        <h1>O atalho para o endgame, com método e consistência</h1>
+        <p class="lead">
+          Duo Carry, Coaching e Progressão Assistida para quem quer evoluir no PvP, destravar rank e otimizar a rotina semanal.
+          Atendimento BR e internacional.
+        </p>
+        <div class="ctaRow">
+          <a class="btn btnPrimary" href="https://wa.me/55SEUNUMEROAQUI" target="_blank" rel="noopener">Orçar no WhatsApp</a>
+          <a class="btn btnGhost" href="https://discord.gg/SEULINKAQUI" target="_blank" rel="noopener">Entrar no Discord</a>
+          <a class="btn btnGhost" href="#planos">Ver preços</a>
+        </div>
+        <div class="divider"></div>
+        <div class="small">
+          Modelo seguro: sem compartilhamento de login. Entrega baseada em sessões, plano e acompanhamento.
+        </div>
+      </div>
+
+      <aside class="card heroSide">
+        <div class="kpis">
+          <div class="kpi"><strong>Duo Carry</strong><span>Você no controle</span></div>
+          <div class="kpi"><strong>Coaching</strong><span>Correção ao vivo</span></div>
+          <div class="kpi"><strong>Plano semanal</strong><span>Rotina objetiva</span></div>
+          <div class="kpi"><strong>Suporte</strong><span>Discord e WhatsApp</span></div>
+        </div>
+        <div class="note">
+          Ideal para quem já joga bem, mas trava em matchup, execução, decisões e consistência de rank.
+        </div>
+        <div class="small mono">
+          Atendimento em call + checklist + acompanhamento
+        </div>
+      </aside>
+    </section>
+
+    <section id="servicos" class="section">
+      <h2>Serviços</h2>
+      <div class="grid3">
+        <div class="box">
+          <h3>Duo Carry para Rank</h3>
+          <p>Jogamos junto e conduzimos o match com call de timing, alvo, rotação e posicionamento.</p>
+          <div class="pill">Foco em resultados práticos</div>
+        </div>
+        <div class="box">
+          <h3>Coaching 1v1 e Arena</h3>
+          <p>Treino guiado ao vivo com correções diretas. Ajuste de build, defesa, punishes e leitura.</p>
+          <div class="pill">Foco em skill real</div>
+        </div>
+        <div class="box">
+          <h3>Progressão Assistida</h3>
+          <p>Plano semanal para otimizar tempo: prioridades, checklist, metas e revisão do que travou.</p>
+          <div class="pill">Foco em eficiência</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="planos" class="section">
+      <h2>Planos</h2>
+      <div class="pricing">
+        <div class="card priceCard">
+          <span class="tag">Start</span>
+          <div class="price">US$ 29</div>
+          <div class="sub">ou R$ 149</div>
+          <ul>
+            <li>1 sessão de 45 min</li>
+            <li>Diagnóstico de build e rotação</li>
+            <li>Checklist de treino para 7 dias</li>
+          </ul>
+          <div class="ctaRow" style="margin-top:14px">
+            <a class="btn btnGhost" href="#contato">Quero esse</a>
+          </div>
+        </div>
+
+        <div class="card priceCard highlight">
+          <span class="tag">Rank</span>
+          <div class="price">US$ 69</div>
+          <div class="sub">ou R$ 349</div>
+          <ul>
+            <li>3 sessões de 45 min</li>
+            <li>Duo Carry em horários combinados</li>
+            <li>Revisão de erros e ajustes</li>
+          </ul>
+          <div class="ctaRow" style="margin-top:14px">
+            <a class="btn btnPrimary" href="https://wa.me/55SEUNUMEROAQUI" target="_blank" rel="noopener">Fechar no WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="card priceCard">
+          <span class="tag">Guild</span>
+          <div class="price">US$ 119</div>
+          <div class="sub">ou R$ 599</div>
+          <ul>
+            <li>5 sessões de 45 min</li>
+            <li>Treino para guerra de guild</li>
+            <li>Plano para fim de semana</li>
+          </ul>
+          <div class="ctaRow" style="margin-top:14px">
+            <a class="btn btnGhost" href="#contato">Orçar para equipe</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="small" style="margin-top:10px">
+        Você pode ajustar valores, criar pacotes e adicionar extras, como revisão de VOD ou sessão express.
+      </div>
+    </section>
+
+    <section id="como-funciona" class="section">
+      <h2>Como funciona</h2>
+      <div class="grid3">
+        <div class="box">
+          <h3>1. Você chama</h3>
+          <p>Você diz seu objetivo e disponibilidade. A gente sugere o plano ideal para seu cenário.</p>
+        </div>
+        <div class="box">
+          <h3>2. Agendamento</h3>
+          <p>Combinamos dia e hora. Você entra em call e joga ao vivo com orientação em tempo real.</p>
+        </div>
+        <div class="box">
+          <h3>3. Entrega</h3>
+          <p>Você recebe checklist e metas. A gente acompanha e ajusta com base no seu progresso.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section card ctaBlock">
+      <div>
+        <h2 style="margin:0 0 6px">Quer destravar seu rank hoje?</h2>
+        <div class="small">Fale com a Mythic Path e diga: objetivo, horário e região.</div>
+      </div>
+      <div class="ctaRow" style="margin:0">
+        <a class="btn btnPrimary" href="https://wa.me/55SEUNUMEROAQUI" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn btnGhost" href="https://discord.gg/SEULINKAQUI" target="_blank" rel="noopener">Discord</a>
+      </div>
+    </section>
+
+    <section id="faq" class="section">
+      <h2>Dúvidas frequentes</h2>
+      <div class="grid3">
+        <details>
+          <summary>Vocês precisam da minha conta?</summary>
+          <p>Não. O modelo é Duo Carry e Coaching. Você joga na sua conta e recebe orientação ao vivo.</p>
+        </details>
+        <details>
+          <summary>Tem garantia de rank?</summary>
+          <p>Garantimos a entrega do serviço contratado: sessões, plano e acompanhamento. Evolução depende de execução e prática.</p>
+        </details>
+        <details>
+          <summary>Quanto tempo dura cada sessão?</summary>
+          <p>45 minutos. Se você quiser, podemos montar um pacote com sessões de 60 minutos.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="contato" class="section card" style="padding:18px">
+      <h2>Contato</h2>
+      <p class="small">
+        Edite os links abaixo com seus contatos reais.
+      </p>
+      <div class="ctaRow">
+        <a class="btn btnPrimary" href="https://wa.me/55SEUNUMEROAQUI" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn btnGhost" href="https://discord.gg/SEULINKAQUI" target="_blank" rel="noopener">Discord</a>
+        <a class="btn btnGhost" href="mailto:contato@seudominio.com">Email</a>
+      </div>
+      <div class="divider"></div>
+      <div class="small">
+        Mythic Path. Your shortcut to the endgame.
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>© Mythic Path</div>
+      <div>Versão BR e Internacional</div>
+    </footer>
+  </div>
+</body>
+</html>
